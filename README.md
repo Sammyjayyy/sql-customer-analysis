@@ -1,6 +1,6 @@
 # SQL Customer Analysis
 
-This project uses *PostgreSQL* to analyze a customer dataset sourced from kaggle. The goal is to uncover insights about customer behavior using SQL — focusing on how factors like *gender, age, income, profession, and family size* influence spending habits.
+This project uses *PostgreSQL* to analyze a customer dataset sourced from kaggle. The goal is to uncover insights about customer behavior using SQL — focusing on how factors like gender, age, income, profession, and family size influence spending habits.
 
 ## Tools Used
 - PostgreSQL for querying and analysis
