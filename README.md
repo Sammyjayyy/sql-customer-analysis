@@ -28,7 +28,9 @@ This project uses *PostgreSQL* to analyze a customer dataset sourced from kaggle
 ## 1. Average Spending Score By Gender
 
 -SELECT gender, AVG(spending_score) AS avg_spending
+
 FROM customers
+
 GROUP BY gender;
 
 -Explanation:
