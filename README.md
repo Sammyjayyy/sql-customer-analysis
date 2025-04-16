@@ -25,16 +25,16 @@ This project uses *PostgreSQL* to analyze a customer dataset sourced from kaggle
 
 ## SQL Queries & Insights
 
-1. Average Spending Score By Gender
+## 1. Average Spending Score By Gender
 
-SELECT gender, AVG(spending_score) AS avg_spending
+-SELECT gender, AVG(spending_score) AS avg_spending
 FROM customers
 GROUP BY gender;
 
-Explanation:
+-Explanation:
 This query shows the average spending score for male and female customers.
 
-Insight:
+-Insight:
 Female customers have a slightly higher average spending score than males. Marketing campaigns can be adjusted based on gender behavior.
 
 2. Spending Score By Age Group
