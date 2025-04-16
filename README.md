@@ -27,31 +27,42 @@ This project uses *PostgreSQL* to analyze a customer dataset sourced from kaggle
 
 ## 1. Average Spending Score By Gender
 
--SELECT gender, AVG(spending_score) AS avg_spending
+SELECT gender, AVG(spending_score) AS avg_spending
 
 FROM customers
 
 GROUP BY gender;
 
--Explanation:
+Explanation:
 This query shows the average spending score for male and female customers.
 
--Insight:
+Insight:
 Female customers have a slightly higher average spending score than males. Marketing campaigns can be adjusted based on gender behavior.
 
-2. Spending Score By Age Group
+## 2. Spending Score By Age Group
 
 SELECT 
+
 	CASE
+ 
 		WHEN age BETWEEN 18 AND 25 THEN '18-25'
+  
 		WHEN age BETWEEN 26 AND 35 THEN '26-25'
+  
 		WHEN age BETWEEN 36 AND 45 THEN '36-45'
+  
 		ELSE '46+'
+  
 	END AS age_group,
+ 
 	COUNT(*) AS total_customers,
+ 
 	AVG(spending_score) AS avg_spending
+ 
 FROM customers
+
 GROUP BY age_group
+
 ORDER BY age_group;
 
 Explanation:
@@ -60,20 +71,32 @@ This query groups customers into age ranges and calculates the average spending 
 Insight:
 The 18–25 age group has the highest average spending score, showing strong purchasing behavior. Adults (26–35) follow closely.
 
-3. Spending Score By Age Group And Gender
+## 3. Spending Score By Age Group And Gender
 
  SELECT 
+ 
 	CASE
+ 
 		WHEN age BETWEEN 18 AND 25 THEN '18-25'
+  
 		WHEN age BETWEEN 26 AND 35 THEN '26-35'
+  
 		WHEN age BETWEEN 36 AND 45 THEN '36-45'
+  
 		ELSE '46+'
+  
 	END AS age_group,
+ 
 	gender,
+ 
 	COUNT(*) AS total_customers,
+ 
 	AVG(spending_score) AS avg_spending
+ 
 FROM customers
+
 GROUP BY age_group, gender
+
 ORDER BY age_group, gender;
 
 Explanation:
@@ -82,19 +105,30 @@ This query gives deeper insight by combining age group and gender to analyze how
 Insight:
 Young adult males (18–25) and adult males (26–35) appear to have the highest spending scores. Female customers in general are more active spenders across all age ranges.
 
-4. Average Spending Score BY Income Range
+## 4. Average Spending Score BY Income Range
 
 SELECT 
+
 	CASE 
+ 
 		WHEN annual_income BETWEEN 0 AND 30000 THEN 'Low'
+  
 		WHEN annual_income BETWEEN 31000 AND 60000 THEN 'Mid'
+  
 		WHEN annual_income BETWEEN 61000 AND 90000 THEN 'Upper-mid'
+  
 		ELSE 'High'
+  
 	END AS income_level,
+ 
 	COUNT(*) AS total_customers,
+ 
 	AVG(spending_score) AS avg_spending
+ 
 FROM customers 
+
 GROUP BY income_level
+
 ORDER BY income_level;
 
 Explanation:
@@ -104,12 +138,18 @@ Insight:
 The high-income group has the highest average spending score, followed closely by the mid-income group.
 However, the upper-mid group spends less on average, which may signal an opportunity for engagement or a need to investigate further.
 
-5. Average Spending Score By Profession
+## 5. Average Spending Score By Profession
+   
 SELECT 
+
 	COALESCE(profession, 'Unknown') AS profession,
+ 
 	COUNT(*) AS total_customers,
+ 
 	AVG(spending_score) AS avg_spending
+ 
 FROM customers
+
 GROUP BY COALESCE(profession, 'Unknown');
 
 Explanation:
@@ -121,13 +161,18 @@ Professions like Doctors and those in Healthcare also have relatively high spend
 Meanwhile, Homemakers, Lawyers, and Marketing professionals spend slightly less on average.
 The “Unknown” group (those without a listed profession) has the lowest spending score, which may represent students, unemployed individuals, or data gaps.
 
-6. Average Spending Score By Family Size
+## 6. Average Spending Score By Family Size
 
 SELECT
+
  	family_size,
+  
 	COUNT(*) AS total_customers,
+ 
 	AVG(spending_score) AS avg_spending
+ 
 FROM customers
+
 GROUP BY family_size;
 
 Explanation:
