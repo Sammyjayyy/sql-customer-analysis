@@ -26,6 +26,7 @@ This project uses *PostgreSQL* to analyze a customer dataset sourced from kaggle
 ## SQL Queries & Insights
 
 1. Average Spending Score By Gender
+
 SELECT gender, AVG(spending_score) AS avg_spending
 FROM customers
 GROUP BY gender;
@@ -37,6 +38,7 @@ Insight:
 Female customers have a slightly higher average spending score than males. Marketing campaigns can be adjusted based on gender behavior.
 
 2. Spending Score By Age Group
+
 SELECT 
 	CASE
 		WHEN age BETWEEN 18 AND 25 THEN '18-25'
@@ -57,6 +59,7 @@ Insight:
 The 18–25 age group has the highest average spending score, showing strong purchasing behavior. Adults (26–35) follow closely.
 
 3. Spending Score By Age Group And Gender
+
  SELECT 
 	CASE
 		WHEN age BETWEEN 18 AND 25 THEN '18-25'
@@ -78,6 +81,7 @@ Insight:
 Young adult males (18–25) and adult males (26–35) appear to have the highest spending scores. Female customers in general are more active spenders across all age ranges.
 
 4. Average Spending Score BY Income Range
+
 SELECT 
 	CASE 
 		WHEN annual_income BETWEEN 0 AND 30000 THEN 'Low'
@@ -116,6 +120,7 @@ Meanwhile, Homemakers, Lawyers, and Marketing professionals spend slightly less 
 The “Unknown” group (those without a listed profession) has the lowest spending score, which may represent students, unemployed individuals, or data gaps.
 
 6. Average Spending Score By Family Size
+
 SELECT
  	family_size,
 	COUNT(*) AS total_customers,
